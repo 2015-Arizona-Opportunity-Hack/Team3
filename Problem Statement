@@ -1,0 +1,12 @@
+Developing a web portal for connecting families affected with Cancer.
+
+Children's Cancer Network is an NGO that provides support for families affected by cancer. Having a support network when dealing with a life-changing problem like cancer is very
+important. Children's Cancer Network wants to facilitate such connections through the use of a web portal. The portal will contains the following features:
+
+Features
+1. Log in  - Enter email id and password, connect with google, facebook OAuth 2.0 - secure
+2. Connect with other families  affected by similar illness and sorted by/ accessible via various filters such as location, age, gender, hospital, doctors name.
+Recommendation system
+3. Create Event/Attend Event - Allow users to host or attend an event. Information needed would be Title, address, time, agenda, duration
+4. Connect/ Get help from Children's cancer network
+5. Account Settings - Enter account information.
