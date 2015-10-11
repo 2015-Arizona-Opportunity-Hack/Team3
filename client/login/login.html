@@ -147,6 +147,8 @@ Published under Creative Commons License 3.0
     <button type="button" class="btn btn-danger" onclick="showEvent()">Events</button>
 </template>
 <template name="queryForm">
+    <div class="panel-group" style="color:black">
+        <div class="panel panel-default">
     <div id="qform" class="col-md-4 col-sm-offset-4">
         <form role="form" class="new-form" id="query-form">
             <div class="form-group2">
@@ -162,12 +164,13 @@ Published under Creative Commons License 3.0
                 </select>
             </div>
             <input type="submit" class="btn-danger" value="Submit">
+            <div class="panel panel-danger">
+                <div class="panel-heading" id="basket"></div>
+            </div>
         </form>
-        <div class="panel panel-danger">
-            <div class="panel-heading">Search results:</div>
-            <div class="panel-body" id="basket" style="color:black"></div>
-        </div>
+
     </div>
+        </div></div>
 </template>
 <template name="event">
     <div class="panel-group" style="color:black">
