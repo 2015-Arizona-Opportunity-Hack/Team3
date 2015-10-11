@@ -1,34 +1,105 @@
 
 <template name="getinfo">
-    <div id="form-div" class="col-md-4 col-sm-offset-4 modal fade" style="height:70%">
-        <span class="glyphicon glyphicon-remove" style="float:right"></span >
-        <form class="new-task" id="user-form">
-            <label for="usr">Name:</label>
-            <input type="text" class="form-control" name="personName" id="usr">
-            <label for="dob">Date of birth:</label><br/>
-            <input type="date" name="personAge">
-            <div class="form-group">
-                <label for="sel1">Select cancer type:</label>
-                <select class="form-control" id="sel1" name="cancerType">
-                    <option>Pancreatic Cancer</option>
-                    <option>Skin Cancer</option>
-                    <option>Lung Cancer</option>
-                    <option>Eye Cancer</option>
-                    <option>Kidney Cancer</option>
-                    <option>Leukemia</option>
-                    <option>Bone Cancer</option>
-                </select>
+
+    <div class="container">
+        <div class="row profile">
+            <div class="col-md-3">
+                <div class="profile-sidebar">
+                    <!-- SIDEBAR USERPIC -->
+                    <div class="profile-userpic">
+                        <img src="http://keenthemes.com/preview/metronic/theme/assets/admin/pages/media/profile/profile_user.jpg" class="img-responsive" alt="">
+                    </div>
+                    <!-- END SIDEBAR USERPIC -->
+                    <!-- SIDEBAR USER TITLE -->
+                    <div class="profile-usertitle">
+                        <div class="profile-usertitle-name">
+                            Marcus Doe
+                        </div>
+                        <div class="profile-usertitle-job">
+                            Developer
+                        </div>
+                    </div>
+                    <!-- END SIDEBAR USER TITLE -->
+                    <!-- SIDEBAR BUTTONS -->
+                    <div class="profile-userbuttons">
+                        <button type="button" class="btn btn-success btn-sm">Follow</button>
+                        <button type="button" class="btn btn-danger btn-sm">Message</button>
+                    </div>
+                    <!-- END SIDEBAR BUTTONS -->
+                    <!-- SIDEBAR MENU -->
+                    <div class="profile-usermenu">
+                        <ul class="nav">
+                            <li class="active">
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-home"></i>
+                                    Overview </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                    Account Settings </a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank">
+                                    <i class="glyphicon glyphicon-ok"></i>
+                                    Tasks </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-flag"></i>
+                                    Help </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- END MENU -->
+                </div>
             </div>
-            <div class="form-group">
-                <label for="sel2">Gender:</label>
-                <select class="form-control" id="sel2" name="gender">
-                    <option>Male</option>
-                    <option>Female</option>
-                    <option>Other</option>
-                </select>
+            <div class="col-md-9">
+                <div class="profile-content">
+                {{#if isFirstTimeUser}}
+                    {{> addProfileDataForm}}
+                {{/if}}
+                    <!--<div id="form-div" class="col-md-4 col-sm-offset-4" style="height:70%">
+                        <span class="glyphicon glyphicon-remove" style="float:right"></span >
+                        <form class="new-task" id="user-form">
+                            <label for="usr">Name:</label>
+                            <input type="text" class="form-control" name="personName" id="usr">
+                            <label for="dob">Date of birth:</label><br/>
+                            <input type="date" name="personAge">
+                            <div class="form-group">
+                                <label for="sel1">Select cancer type:</label>
+                                <select class="form-control" id="sel1" name="cancerType">
+                                    <option>Pancreatic Cancer</option>
+                                    <option>Skin Cancer</option>
+                                    <option>Lung Cancer</option>
+                                    <option>Eye Cancer</option>
+                                    <option>Kidney Cancer</option>
+                                    <option>Leukemia</option>
+                                    <option>Bone Cancer</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="sel2">Gender:</label>
+                                <select class="form-control" id="sel2" name="gender">
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <input type="submit" value="Submit">
+                            <input type="button" value="Cancel" id="cancel_btn">
+                        </form>
+                    </div>-->
+                </div>
             </div>
-            <input type="submit" value="Submit">
-            <input type="button" value="Cancel" id="cancel_btn">
-        </form>
+        </div>
     </div>
+    <center>
+        <strong>Powered by <a href="http://j.mp/metronictheme" target="_blank">KeenThemes</a></strong>
+    </center>
+    <br>
+    <br>
+    <!--
+
+    -->
 </template>
