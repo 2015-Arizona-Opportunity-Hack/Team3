@@ -1,3 +1,4 @@
+
 if (Meteor.isClient) {
     // This code only runs on the client
     Template.body.helpers({
@@ -17,7 +18,7 @@ if (Meteor.isClient) {
             // Insert a task into the collection
             if (Meteor.userId()) {
                  Meteor.users.update({_id: Meteor.userId()},
-                     { $set: { 'profile.name': personName }});
+                     { $set: { 'profile.name': personName, 'profile.age': personAge }});
             }
         }
     });

@@ -76,24 +76,26 @@ Published under Creative Commons License 3.0
         </div>
 
     </section>
+    {{> info}}
     <!-- Footer -->
-    <footer id="footer">
-        {{> info}}
-        <ul class="icons">
-            <li><a href="#" class="icon circle fa-twitter"><span class="label">Twitter</span></a></li>
-            <li><a href="#" class="icon circle fa-facebook"><span class="label">Facebook</span></a></li>
-            <li><a href="#" class="icon circle fa-google-plus"><span class="label">Google+</span></a></li>
-            <li><a href="#" class="icon circle fa-github"><span class="label">Github</span></a></li>
-            <li><a href="#" class="icon circle fa-dribbble"><span class="label">Dribbble</span></a></li>
-        </ul>
+    <!--&lt;!&ndash;<div>-->
+    <!--<footer id="footer">-->
 
-        <ul class="copyright">
-            <li>&copy; Untitled</li>
-            <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-        </ul>
+        <!--<ul class="icons">-->
+            <!--<li><a href="#" class="icon circle fa-twitter"><span class="label">Twitter</span></a></li>-->
+            <!--<li><a href="#" class="icon circle fa-facebook"><span class="label">Facebook</span></a></li>-->
+            <!--<li><a href="#" class="icon circle fa-google-plus"><span class="label">Google+</span></a></li>-->
+            <!--<li><a href="#" class="icon circle fa-github"><span class="label">Github</span></a></li>-->
+            <!--<li><a href="#" class="icon circle fa-dribbble"><span class="label">Dribbble</span></a></li>-->
+        <!--</ul>-->
 
-    </footer>
+        <!--<ul class="copyright">-->
+            <!--<li>&copy; Untitled</li>-->
+            <!--<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>-->
+        <!--</ul>-->
 
+    <!--</footer>-->
+    <!--</div>&ndash;&gt;-->
 </div>
 
 <!-- Scripts -->
@@ -108,10 +110,23 @@ Published under Creative Commons License 3.0
 
 </body>
 <template name="info">
-    <form class="new-task">
-        Name:<input type="text" name="personName">
-        Age:<input type="text" name="personAge">
-        <input type="submit" value="send">
+    <div id="form-div" class="col-md-4 col-sm-offset-4">
+    <form class="new-task" id="user-form">
+        <label for="usr">Name:</label>
+        <input type="text" class="form-control" name="personName" id="usr">
+        <label for="dob">Date of birth:</label><br/>
+        <input type="date" name="personAge">
+        <div class="form-group">
+            <label for="sel1">Select cancer type:</label>
+            <select class="form-control" id="sel1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+            </select>
+        </div>
+        <input type="submit" value="Submit">
     </form>
+    </div>
 </template>
 
