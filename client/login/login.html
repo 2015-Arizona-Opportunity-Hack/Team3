@@ -51,7 +51,7 @@ Published under Creative Commons License 3.0
                         </form>-->
                     {{/if}}</a></li>
 
-                <li class="current"><a href="#" id="settings2">Welcome</a></li>
+                <li class="current"><a href="#" data-toggle="popover" id="settings2">Welcome</a></li>
                 <li class="current">{{#if currentUser}}<a href="#" id="settings">Settings</a>{{/if}}</li>
             </ul>
         </nav>
@@ -60,85 +60,103 @@ Published under Creative Commons License 3.0
     <!-- Banner -->
 
     <section id="banner">
-    {{#if currentUser}}
-        {{> dashboard}}
-        <div style="display:none;" id="discoverDiv"> {{> graph}}</div>
-        <div style="display:none;" id="eventDiv">{{> event}}</div>
-        <div style="display:none;" id="connectDiv"> {{> queryForm}}</div>
-    {{else}}
-        <div class="inner">
-            <header>
-                <h2>Children's Cancer Network</h2>
-            </header>
-            <p>Cancer <strong>sucks</strong>
-                <br/>
-                Get and offer support to our community!
-                <br/>
-                by <a href="https://github.com/Opportunity-Hack-2015-Arizona/Team3" target="_blank">SEGFAULT</a>.</p>
-            <footer>
-                <ul class="buttons vertical">
-                    <li><a href="http://childrenscancernetwork.org/" class="button fit scrolly" target="_blank">Tell Me More</a></li>
-                </ul>
-            </footer>
-        </div>
-    {{/if}}
+        {{#if currentUser}}
+            {{> dashboard}}
+            <div style="display:none;" id="discoverDiv"> {{> graph}}</div>
+            <div style="display:none;" id="eventDiv">{{> event}}</div>
+            <div style="display:none;" id="connectDiv"> {{> queryForm}}</div>
+        {{else}}
+            <div class="inner">
+                <header>
+                    <h2>Children's Cancer Network</h2>
+                </header>
+                <p>Cancer <strong>sucks</strong>
+                    <br/>
+                    Get and offer support to our community!
+                    <br/>
+                    by <a href="https://github.com/Opportunity-Hack-2015-Arizona/Team3" target="_blank">SEGFAULT</a>.
+                </p>
+                <footer>
+                    <ul class="buttons vertical">
+                        <li><a href="http://childrenscancernetwork.org/" class="button fit scrolly" target="_blank">Tell
+                            Me More</a></li>
+                    </ul>
+                </footer>
+            </div>
+        {{/if}}
     </section>
 
     {{> info}}
 
     <!-- Footer -->
     <div>
-    <footer id="footer">
+        <footer id="footer">
 
-        <ul class="icons">
-            <li><a href="#" class="icon circle fa-twitter"><span class="label">Twitter</span></a></li>
-            <li><a href="#" class="icon circle fa-facebook"><span class="label">Facebook</span></a></li>
-            <li><a href="#" class="icon circle fa-google-plus"><span class="label">Google+</span></a></li>
-            <li><a href="#" class="icon circle fa-github"><span class="label">Github</span></a></li>
-            <li><a href="#" class="icon circle fa-dribbble"><span class="label">Dribbble</span></a></li>
-        </ul>
+            <ul class="icons">
+                <li><a href="#" class="icon circle fa-twitter"><span class="label">Twitter</span></a></li>
+                <li><a href="#" class="icon circle fa-facebook"><span class="label">Facebook</span></a></li>
+                <li><a href="#" class="icon circle fa-google-plus"><span class="label">Google+</span></a></li>
+                <li><a href="#" class="icon circle fa-github"><span class="label">Github</span></a></li>
+                <li><a href="#" class="icon circle fa-dribbble"><span class="label">Dribbble</span></a></li>
+            </ul>
 
-        <ul class="copyright">
-            <li>&copy; Untitled</li>
-            <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-        </ul>
+            <ul class="copyright">
+                <li>&copy; Untitled</li>
+                <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+            </ul>
 
-    </footer>
+        </footer>
     </div>
 </div>
-
+<div id="event-div" class="col-md-4 col-sm-offset-4 modal fade " style="height:70%">
+    <span class="glyphicon glyphicon-remove" style="float:right"></span>
+    <form class="new-event" id="event-form">
+        <label for="evn">Name:</label>
+        <input type="text" class="form-control" name="eventName" id="evn">
+        <label for="event-date">Date:</label><br/>
+        <input type="date" name="eventDate" id="event-date"><br>
+        <label for="event-time">Time:</label><br/>
+        <input type="time" name="eventTime" id="event-time"><br>
+        <label for="desc">Description:</label><br>
+        <textarea class="form-control" rows="5" name="description" id="desc"></textarea>
+        <input type="submit" value="Submit">
+        <input type="button" value="Cancel" id="cancel2">
+    </form>
+</div>
 </body>
 <template name="info">
     <div id="form-div" class="col-md-4 col-sm-offset-4 modal fade" style="height:70%">
-        <span class="glyphicon glyphicon-remove" style="float:right"></span >
-    <form class="new-task" id="user-form">
-        <label for="usr">Name:</label>
-        <input type="text" class="form-control" name="personName" id="usr">
-        <label for="dob">Date of birth:</label><br/>
-        <input type="date" name="personAge">
-        <div class="form-group">
-            <label for="sel1">Select cancer type:</label>
-            <select class="form-control" id="sel1" name="cancerType">
-                <option>Pancreatic Cancer</option>
-                <option>Skin Cancer</option>
-                <option>Lung Cancer</option>
-                <option>Eye Cancer</option>
-                <option>Kidney Cancer</option>
-                <option>Leukemia</option>
-                <option>Bone Cancer</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="sel2">Gender:</label>
-            <select class="form-control" id="sel2" name="gender">
-                <option>Male</option>
-                <option>Female</option>
-                <option>Other</option>
-            </select>
-        </div>
-        <input type="submit" value="Submit">
-        <input type="button" value="Cancel" id="cancel_btn">
-    </form>
+        <span class="glyphicon glyphicon-remove" style="float:right"></span>
+
+        <form class="new-task" id="user-form">
+            <label for="usr">Name:</label>
+            <input type="text" class="form-control" name="personName" id="usr">
+            <label for="dob">Date of birth:</label><br/>
+            <input type="date" name="personAge">
+
+            <div class="form-group">
+                <label for="sel1">Select cancer type:</label>
+                <select class="form-control" id="sel1" name="cancerType">
+                    <option>Pancreatic Cancer</option>
+                    <option>Skin Cancer</option>
+                    <option>Lung Cancer</option>
+                    <option>Eye Cancer</option>
+                    <option>Kidney Cancer</option>
+                    <option>Leukemia</option>
+                    <option>Bone Cancer</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="sel2">Gender:</label>
+                <select class="form-control" id="sel2" name="gender">
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                </select>
+            </div>
+            <input type="submit" value="Submit">
+            <input type="button" value="Cancel" id="cancel_btn">
+        </form>
     </div>
 </template>
 <template name="dashboard">
@@ -149,38 +167,39 @@ Published under Creative Commons License 3.0
 <template name="queryForm">
     <div class="panel-group" style="color:black">
         <div class="panel panel-default">
-    <div id="qform" class="col-md-4 col-sm-offset-4">
-        <form role="form" class="new-form" id="query-form">
-            <div class="form-group2">
-                <label for="sel1">Select cancer type:</label>
-                <select class="form-control" id="sel3" name="cancerType">
-                    <option value="Pancreatic Cancer">Pancreatic Cancer</option>
-                    <option value="Skin Cancer">Skin Cancer</option>
-                    <option value="Lung Cancer">Lung Cancer</option>
-                    <option value="Eye Cancer">Eye Cancer</option>
-                    <option value="Kidney Cancer">Kidney Cancer</option>
-                    <option value="Leukemia Cancer">Leukemia</option>
-                    <option value="Bone Cancer">Bone Cancer</option>
-                </select>
-            </div>
-            <input type="submit" class="btn-danger" value="Submit">
-            <div class="panel panel-danger">
-                <div class="panel-heading" id="basket"></div>
-            </div>
-        </form>
+            <div id="qform" class="col-md-4 col-sm-offset-4">
+                <form role="form" class="new-form" id="query-form">
+                    <div class="form-group2">
+                        <label for="sel1">Select cancer type:</label>
+                        <select class="form-control" id="sel3" name="cancerType">
+                            <option value="Pancreatic Cancer">Pancreatic Cancer</option>
+                            <option value="Skin Cancer">Skin Cancer</option>
+                            <option value="Lung Cancer">Lung Cancer</option>
+                            <option value="Eye Cancer">Eye Cancer</option>
+                            <option value="Kidney Cancer">Kidney Cancer</option>
+                            <option value="Leukemia Cancer">Leukemia</option>
+                            <option value="Bone Cancer">Bone Cancer</option>
+                        </select>
+                    </div>
+                    <input type="submit" class="btn-danger" value="Submit">
 
+                    <div class="panel panel-danger">
+                        <div class="panel-heading" id="basket"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-        </div></div>
 </template>
 <template name="event">
     <div class="panel-group" style="color:black">
         <div class="panel panel-default">
             <div class="panel-heading">NoChemoParty</div>
             <div class="panel-body">Come join us at Hyde Park, as we celebrate 1 year of No Chemo for John!!
-            <div>Time: 5:30 PM</div>
-            <div>Date: 25th October, 2015
+                <div>Time: 5:30 PM</div>
+                <div>Date: 25th October, 2015
+                </div>
             </div>
-        </div>
             <div class="panel panel-default">
                 <div class="panel-heading">Leukemia Cancer Survivors Meeting</div>
                 <div class="panel-body">The Leukemia Cancer Survivors Group will be meeting this Saturday.
@@ -193,11 +212,12 @@ Published under Creative Commons License 3.0
                     <div class="panel-body"> The Children Cancer association will be hosting a halloween party
                         <div>Time: 5:30 PM</div>
                         <div>Date: 15th October, 2015</div>
-                        </div>
                     </div>
-    </div>
-    </div>
+                </div>
+            </div>
         </div>
+        <button type="button" class="btn btn-success" id="create-event">Create Event</button>
+    </div>
 </template>
 <template name="graph">
 
@@ -213,6 +233,7 @@ Published under Creative Commons License 3.0
             stroke: #999;
             stroke-opacity: .6;
         }
+
         div.tooltip {
             position: absolute;
             text-align: center;
@@ -231,43 +252,44 @@ Published under Creative Commons License 3.0
 
 
         var graph = {
-            "nodes":[
-                {"name":"Yousuf","group":"strong"},
-                {"name":"Vishal","group":"medium"},
-                {"name":"Sarin","group":"medium"},
-                {"name":"Tharun","group":"medium"},
-                {"name":"Nitesh","group":"medium"},
-                {"name":"Katy","group":"weak"},
-                {"name":"Kelly","group":"medium"},
-                {"name":"Abby","group":"strong"},
-                {"name":"Chris","group":"strong"},
-                {"name":"Kathy","group":"weak"},
-                {"name":"Claire","group":"weak"},
-                {"name":"Doug","group":"weak"},
-                {"name":"John","group":"strong"},
-                {"name":"Cathy","group":"weak"},
-                {"name":"Nicole","group":"weak"},
-                {"name":"Joe","group":"medium"},
-                {"name":"Jake","group":"weak"}
+            "nodes": [
+                {"name": "Yousuf", "group": "strong"},
+                {"name": "Vishal", "group": "medium"},
+                {"name": "Sarin", "group": "medium"},
+                {"name": "Tharun", "group": "medium"},
+                {"name": "Nitesh", "group": "medium"},
+                {"name": "Katy", "group": "weak"},
+                {"name": "Kelly", "group": "medium"},
+                {"name": "Abby", "group": "strong"},
+                {"name": "Chris", "group": "strong"},
+                {"name": "Kathy", "group": "weak"},
+                {"name": "Claire", "group": "weak"},
+                {"name": "Doug", "group": "weak"},
+                {"name": "John", "group": "strong"},
+                {"name": "Cathy", "group": "weak"},
+                {"name": "Nicole", "group": "weak"},
+                {"name": "Joe", "group": "medium"},
+                {"name": "Jake", "group": "weak"}
             ],
             "links": [
-                {"source":0,"target":2,"value":4,"linkdistance":200},
-                {"source":0,"target":3,"value":4,"linkdistance":200},
-                {"source":0,"target":1,"value":2,"linkdistance":100},
-                {"source":0,"target":5,"value":3,"linkdistance":150},
-                {"source":0,"target":4,"value":1,"linkdistance":50},
-                {"source":0,"target":6,"value":4,"linkdistance":50},
-                {"source":0,"target":7,"value":4,"linkdistance":50},
-                {"source":0,"target":8,"value":4,"linkdistance":50},
-                {"source":0,"target":9,"value":4,"linkdistance":150},
-                {"source":0,"target":10,"value":4,"linkdistance":200},
-                {"source":0,"target":11,"value":4,"linkdistance":200},
-                {"source":0,"target":12,"value":4,"linkdistance":100},
-                {"source":0,"target":13,"value":4,"linkdistance":100},
-                {"source":0,"target":14,"value":4,"linkdistance":200},
-                {"source":0,"target":15,"value":4,"linkdistance":100},
-                {"source":0,"target":16,"value":4,"linkdistance":200},
-            ]};
+                {"source": 0, "target": 2, "value": 4, "linkdistance": 200},
+                {"source": 0, "target": 3, "value": 4, "linkdistance": 200},
+                {"source": 0, "target": 1, "value": 2, "linkdistance": 100},
+                {"source": 0, "target": 5, "value": 3, "linkdistance": 150},
+                {"source": 0, "target": 4, "value": 1, "linkdistance": 50},
+                {"source": 0, "target": 6, "value": 4, "linkdistance": 50},
+                {"source": 0, "target": 7, "value": 4, "linkdistance": 50},
+                {"source": 0, "target": 8, "value": 4, "linkdistance": 50},
+                {"source": 0, "target": 9, "value": 4, "linkdistance": 150},
+                {"source": 0, "target": 10, "value": 4, "linkdistance": 200},
+                {"source": 0, "target": 11, "value": 4, "linkdistance": 200},
+                {"source": 0, "target": 12, "value": 4, "linkdistance": 100},
+                {"source": 0, "target": 13, "value": 4, "linkdistance": 100},
+                {"source": 0, "target": 14, "value": 4, "linkdistance": 200},
+                {"source": 0, "target": 15, "value": 4, "linkdistance": 100},
+                {"source": 0, "target": 16, "value": 4, "linkdistance": 200},
+            ]
+        };
 
         var width = 1200,
                 height = 900;
@@ -276,7 +298,9 @@ Published under Creative Commons License 3.0
 
         var force = d3.layout.force()
                 .charge(-5000)
-                .linkDistance(function(d) { return  d.linkdistance; })
+                .linkDistance(function (d) {
+                    return d.linkdistance;
+                })
                 .size([width, height]);
 
         var div = d3.select("#graphContainer").append("div")
@@ -296,7 +320,9 @@ Published under Creative Commons License 3.0
                 .data(graph.links)
                 .enter().append("line")
                 .attr("class", "link")
-                .style("stroke-width", function(d) { return Math.sqrt(d.value); });
+                .style("stroke-width", function (d) {
+                    return Math.sqrt(d.value);
+                });
 
         var node = svg.selectAll(".node")
                 .data(graph.nodes)
@@ -304,19 +330,23 @@ Published under Creative Commons License 3.0
                 .attr("class", "node")
                 .append("circle")
                 .attr("r", 40)
-                .style("fill",function(d) { return color(d.group); })
+                .style("fill", function (d) {
+                    return color(d.group);
+                })
                 .attr('fill-opacity', 0.2)
-                .style("stroke", function(d) { return color(d.group); })
+                .style("stroke", function (d) {
+                    return color(d.group);
+                })
                 .call(force.drag)
-                .on("mouseover", function(d) {
+                .on("mouseover", function (d) {
                     div.transition()
                             .duration(200)
                             .style("opacity", .9);
-                    div	.html(d.name + "<br/>"  + d.group)
+                    div.html(d.name + "<br/>" + d.group)
                             .style("left", (d3.event.pageX) + "px")
                             .style("top", (d3.event.pageY - 28) + "px");
                 })
-                .on("mouseout", function(d) {
+                .on("mouseout", function (d) {
                     div.transition()
                             .duration(500)
                             .style("opacity", 0);
@@ -325,17 +355,31 @@ Published under Creative Commons License 3.0
 
         node.append("title")
                 .attr("text-anchor", "middle")
-                .text(function(d) { return d.name; });
+                .text(function (d) {
+                    return d.name;
+                });
 
 
-        force.on("tick", function() {
-            link.attr("x1", function(d) { return d.source.x; })
-                    .attr("y1", function(d) { return d.source.y; })
-                    .attr("x2", function(d) { return d.target.x; })
-                    .attr("y2", function(d) { return d.target.y; });
+        force.on("tick", function () {
+            link.attr("x1", function (d) {
+                return d.source.x;
+            })
+                    .attr("y1", function (d) {
+                        return d.source.y;
+                    })
+                    .attr("x2", function (d) {
+                        return d.target.x;
+                    })
+                    .attr("y2", function (d) {
+                        return d.target.y;
+                    });
 
-            node.attr("cx", function(d) { return d.x; })
-                    .attr("cy", function(d) { return d.y; });
+            node.attr("cx", function (d) {
+                return d.x;
+            })
+                    .attr("cy", function (d) {
+                        return d.y;
+                    });
         });
         function showDiscover() {
             document.getElementById('discoverDiv').style.display = "block";

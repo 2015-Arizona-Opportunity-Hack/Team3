@@ -1,4 +1,23 @@
+Events = new Mongo.Collection("events");
 if (Meteor.isClient) {
+    Template.body.events({
+        "submit .new-event": function (event) {
+            // Prevent default browser form submit
+            event.preventDefault();
+            var eventName= event.target.eventName.value;
+            var eventDate= event.target.eventDate.value;
+            var description= event.target.description.value;
+            var eventTime= event.target.eventTime.value;
+            Events.insert({
+                eventName: eventName,
+                eventDate: eventDate,
+                eventTime: eventTime,
+                description: description,
+                createdAt: new Date() // current time
+            });
+            $('#event-div').modal('hide');
+        }
+    });
     // This code only runs on the client
     Template.body.helpers({
         graphs: function () {
@@ -54,6 +73,7 @@ if (Meteor.isClient) {
             }
         }
     });
+
     Template.body.events({
         'click #settings': function (e) {
             e.preventDefault();
@@ -61,15 +81,28 @@ if (Meteor.isClient) {
         }
     });
     Template.body.events({
+        'click #create-event': function (e) {
+            e.preventDefault();
+            $('#event-div').modal('show');
+        }
+    });
+    Template.body.events({
         'click .glyphicon-remove': function (e) {
             e.preventDefault();
             $('#form-div').modal('hide');
+            $('#event-div').modal('hide');
         }
     });
     Template.body.events({
         'click #cancel_btn': function (e) {
             e.preventDefault();
             $('#form-div').modal('hide');
+        }
+    });
+    Template.body.events({
+        'click #cancel2': function (e) {
+            e.preventDefault();
+            $('#event-div').modal('hide');
         }
     });
     Accounts.ui.config({
