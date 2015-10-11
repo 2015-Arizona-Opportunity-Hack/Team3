@@ -56,22 +56,21 @@ Published under Creative Commons License 3.0
                 <h2>MEETME</h2>
             </header>
             <p>This is <strong>MeetMe</strong>, a collaborative
-                <br />
+                <br/>
                 meeting planner
-                <br />
+                <br/>
                 by <a href="https://github.com/ser515asu/MeetMe-Segfault">SEGFAULT</a>.</p>
             <footer>
                 <ul class="buttons vertical">
                     <li><a href="#" class="button fit scrolly">Tell Me More</a></li>
                 </ul>
             </footer>
-
         </div>
 
     </section>
     <!-- Footer -->
     <footer id="footer">
-
+        {{> info}}
         <ul class="icons">
             <li><a href="#" class="icon circle fa-twitter"><span class="label">Twitter</span></a></li>
             <li><a href="#" class="icon circle fa-facebook"><span class="label">Facebook</span></a></li>
@@ -81,7 +80,8 @@ Published under Creative Commons License 3.0
         </ul>
 
         <ul class="copyright">
-            <li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+            <li>&copy; Untitled</li>
+            <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
         </ul>
 
     </footer>
@@ -99,4 +99,11 @@ Published under Creative Commons License 3.0
 <script src="assets/js/main.js"></script>
 
 </body>
+<template name="info">
+    <form class="new-task">
+        Name:<input type="text" name="personName">
+        Age:<input type="text" name="personAge">
+        <input type="submit" value="send">
+    </form>
+</template>
 
