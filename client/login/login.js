@@ -2,7 +2,7 @@ if (Meteor.isClient) {
     // This code only runs on the client
     Template.body.helpers({
         graphs: function () {
-            var x= Meteor.users.find({}, {sort: {createdAt: -1}});
+            var x = Meteor.users.find({}, {sort: {createdAt: -1}});
         }
     });
     Template.body.events({
@@ -32,6 +32,26 @@ if (Meteor.isClient) {
                 $('#form-div').modal('hide');
             }
             $('#form-div').modal('hide');
+        }
+    });
+    Template.body.events({
+        "submit .new-form": function (event) {
+            // Prevent default browser form submit
+            event.preventDefault();
+            var cancerType = event.target.cancerType.value;
+            if (Meteor.userId()) {
+                var x = Meteor.users.find({'profile.cancerType': cancerType}).fetch();
+                var ans = "";
+                if (typeof x[0]!== "undefined") {
+                    for (var i = 0; i < x.length; i++) {
+                        ans += x[i].username + "<br>";
+                        console.log(x[i].username);
+                    }
+                } else{
+                    ans="Sorry! No people found!"
+                }
+                document.getElementById("basket").innerHTML = ans;
+            }
         }
     });
     Template.body.events({

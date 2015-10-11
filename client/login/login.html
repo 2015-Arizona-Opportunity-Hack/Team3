@@ -64,6 +64,7 @@ Published under Creative Commons License 3.0
         {{> dashboard}}
         <div style="display:none;" id="discoverDiv"> {{> graph}}</div>
         <div style="display:none;" id="eventDiv">{{> event}}</div>
+        <div style="display:none;" id="connectDiv"> {{> queryForm}}</div>
     {{else}}
         <div class="inner">
             <header>
@@ -141,10 +142,32 @@ Published under Creative Commons License 3.0
     </div>
 </template>
 <template name="dashboard">
-    <button type="button" class="btn btn-danger">Connect</button>
-    <button type="button" class="btn btn-danger">Forums</button>
-    <button type="button" class="btn btn-danger" onclick="showDiv()">Discover</button>
+    <button type="button" class="btn btn-danger" onclick="showConnect()">Connect</button>
+    <button type="button" class="btn btn-danger" onclick="showDiscover()">Discover</button>
     <button type="button" class="btn btn-danger" onclick="showEvent()">Events</button>
+</template>
+<template name="queryForm">
+    <div id="qform" class="col-md-4 col-sm-offset-4">
+        <form role="form" class="new-form" id="query-form">
+            <div class="form-group2">
+                <label for="sel1">Select cancer type:</label>
+                <select class="form-control" id="sel3" name="cancerType">
+                    <option value="Pancreatic Cancer">Pancreatic Cancer</option>
+                    <option value="Skin Cancer">Skin Cancer</option>
+                    <option value="Lung Cancer">Lung Cancer</option>
+                    <option value="Eye Cancer">Eye Cancer</option>
+                    <option value="Kidney Cancer">Kidney Cancer</option>
+                    <option value="Leukemia Cancer">Leukemia</option>
+                    <option value="Bone Cancer">Bone Cancer</option>
+                </select>
+            </div>
+            <input type="submit" class="btn-danger" value="Submit">
+        </form>
+        <div class="panel panel-danger">
+            <div class="panel-heading">Search results:</div>
+            <div class="panel-body" id="basket" style="color:black"></div>
+        </div>
+    </div>
 </template>
 <template name="event">
     <div class="panel-group" style="color:black">
@@ -172,12 +195,6 @@ Published under Creative Commons License 3.0
     </div>
     </div>
         </div>
-<script>
-    function showEvent() {
-        document.getElementById('eventDiv').style.display = "block";
-        document.getElementById('discoverDiv').style.display = "none";
-    }
-</script>
 </template>
 <template name="graph">
 
@@ -317,9 +334,20 @@ Published under Creative Commons License 3.0
             node.attr("cx", function(d) { return d.x; })
                     .attr("cy", function(d) { return d.y; });
         });
-        function showDiv() {
+        function showDiscover() {
             document.getElementById('discoverDiv').style.display = "block";
+            document.getElementById('connectDiv').style.display = "none";
             document.getElementById('eventDiv').style.display = "none";
+        }
+        function showConnect() {
+            document.getElementById('discoverDiv').style.display = "none";
+            document.getElementById('connectDiv').style.display = "block";
+            document.getElementById('eventDiv').style.display = "none";
+        }
+        function showEvent() {
+            document.getElementById('eventDiv').style.display = "block";
+            document.getElementById('discoverDiv').style.display = "none";
+            document.getElementById('connectDiv').style.display = "none";
         }
 
     </script>

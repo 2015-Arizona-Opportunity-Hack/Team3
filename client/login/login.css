@@ -580,7 +580,6 @@ z-index: 10000;
 #banner {
     background-attachment: scroll, scroll, scroll, fixed;
     background-color: #645862;
-
     background-position: bottom left, bottom right, top left, top center;
     background-repeat: no-repeat, no-repeat, repeat, no-repeat;
     background-size: 25em, 25em, auto, cover;
@@ -677,3 +676,4 @@ z-index: 10000;
 .glyphicon-remove {
     cursor: pointer;
 }
+
