@@ -63,6 +63,7 @@ Published under Creative Commons License 3.0
     {{#if currentUser}}
         {{> dashboard}}
         <div style="display:none;" id="discoverDiv"> {{> graph}}</div>
+        <div style="display:none;" id="eventDiv">{{> event}}</div>
     {{else}}
         <div class="inner">
             <header>
@@ -143,6 +144,40 @@ Published under Creative Commons License 3.0
     <button type="button" class="btn btn-danger">Connect</button>
     <button type="button" class="btn btn-danger">Forums</button>
     <button type="button" class="btn btn-danger" onclick="showDiv()">Discover</button>
+    <button type="button" class="btn btn-danger" onclick="showEvent()">Events</button>
+</template>
+<template name="event">
+    <div class="panel-group" style="color:black">
+        <div class="panel panel-default">
+            <div class="panel-heading">NoChemoParty</div>
+            <div class="panel-body">Come join us at Hyde Park, as we celebrate 1 year of No Chemo for John!!
+            <div>Time: 5:30 PM</div>
+            <div>Date: 25th October, 2015
+            </div>
+        </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">Leukemia Cancer Survivors Meeting</div>
+                <div class="panel-body">The Leukemia Cancer Survivors Group will be meeting this Saturday.
+                    <div>Time: 2:30 PM</div>
+                    <div>Date: 20th October, 2015
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading"> Children Cancer Association Halloween Party</div>
+                    <div class="panel-body"> The Children Cancer association will be hosting a halloween party
+                        <div>Time: 5:30 PM</div>
+                        <div>Date: 15th October, 2015</div>
+                        </div>
+                    </div>
+    </div>
+    </div>
+        </div>
+<script>
+    function showEvent() {
+        document.getElementById('eventDiv').style.display = "block";
+        document.getElementById('discoverDiv').style.display = "none";
+    }
+</script>
 </template>
 <template name="graph">
 
@@ -177,19 +212,41 @@ Published under Creative Commons License 3.0
 
         var graph = {
             "nodes":[
-                {"name":"Yousuf","group":"Illness"},
-                {"name":"Vishal","group":"Illness"},
-                {"name":"Sarin","group":"Age"},
-                {"name":"Tharun","group":"Gender"},
-                {"name":"Nitesh","group":"Location"},
-                {"name":"Jot","group":"Illness"}
+                {"name":"Yousuf","group":"strong"},
+                {"name":"Vishal","group":"medium"},
+                {"name":"Sarin","group":"medium"},
+                {"name":"Tharun","group":"medium"},
+                {"name":"Nitesh","group":"medium"},
+                {"name":"Katy","group":"weak"},
+                {"name":"Kelly","group":"medium"},
+                {"name":"Abby","group":"strong"},
+                {"name":"Chris","group":"strong"},
+                {"name":"Kathy","group":"weak"},
+                {"name":"Claire","group":"weak"},
+                {"name":"Doug","group":"weak"},
+                {"name":"John","group":"strong"},
+                {"name":"Cathy","group":"weak"},
+                {"name":"Nicole","group":"weak"},
+                {"name":"Joe","group":"medium"},
+                {"name":"Jake","group":"weak"}
             ],
             "links": [
                 {"source":0,"target":2,"value":4,"linkdistance":200},
                 {"source":0,"target":3,"value":4,"linkdistance":200},
                 {"source":0,"target":1,"value":2,"linkdistance":100},
                 {"source":0,"target":5,"value":3,"linkdistance":150},
-                {"source":0,"target":4,"value":1,"linkdistance":50}
+                {"source":0,"target":4,"value":1,"linkdistance":50},
+                {"source":0,"target":6,"value":4,"linkdistance":50},
+                {"source":0,"target":7,"value":4,"linkdistance":50},
+                {"source":0,"target":8,"value":4,"linkdistance":50},
+                {"source":0,"target":9,"value":4,"linkdistance":150},
+                {"source":0,"target":10,"value":4,"linkdistance":200},
+                {"source":0,"target":11,"value":4,"linkdistance":200},
+                {"source":0,"target":12,"value":4,"linkdistance":100},
+                {"source":0,"target":13,"value":4,"linkdistance":100},
+                {"source":0,"target":14,"value":4,"linkdistance":200},
+                {"source":0,"target":15,"value":4,"linkdistance":100},
+                {"source":0,"target":16,"value":4,"linkdistance":200},
             ]};
 
         var width = 1200,
@@ -262,6 +319,7 @@ Published under Creative Commons License 3.0
         });
         function showDiv() {
             document.getElementById('discoverDiv').style.display = "block";
+            document.getElementById('eventDiv').style.display = "none";
         }
 
     </script>
