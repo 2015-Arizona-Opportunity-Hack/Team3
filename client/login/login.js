@@ -1,8 +1,8 @@
 if (Meteor.isClient) {
     // This code only runs on the client
     Template.body.helpers({
-        tasks: function () {
-            return Tasks.find({}, {sort: {createdAt: -1}});
+        graphs: function () {
+            var x= Meteor.users.find({}, {sort: {createdAt: -1}});
         }
     });
     Template.body.events({
