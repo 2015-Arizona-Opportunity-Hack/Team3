@@ -2,7 +2,6 @@
 Credit: http://html5up.net/twenty
 Published under Creative Commons License 3.0
 -->
-
 <head>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -59,7 +58,12 @@ Published under Creative Commons License 3.0
     </header>
 
     <!-- Banner -->
+
     <section id="banner">
+    {{#if currentUser}}
+        {{> dashboard}}
+        <div style="display:none;" id="discoverDiv"> {{> graph}}</div>
+    {{else}}
         <div class="inner">
             <header>
                 <h2>Children's Cancer Network</h2>
@@ -75,10 +79,11 @@ Published under Creative Commons License 3.0
                 </ul>
             </footer>
         </div>
-
+    {{/if}}
     </section>
+
     {{> info}}
-    {{> graph}}
+
     <!-- Footer -->
     <div>
     <footer id="footer">
@@ -133,6 +138,11 @@ Published under Creative Commons License 3.0
         <input type="button" value="Cancel" id="cancel_btn">
     </form>
     </div>
+</template>
+<template name="dashboard">
+    <button type="button" class="btn btn-danger">Connect</button>
+    <button type="button" class="btn btn-danger">Forums</button>
+    <button type="button" class="btn btn-danger" onclick="showDiv()">Discover</button>
 </template>
 <template name="graph">
 
@@ -250,6 +260,9 @@ Published under Creative Commons License 3.0
             node.attr("cx", function(d) { return d.x; })
                     .attr("cy", function(d) { return d.y; });
         });
+        function showDiv() {
+            document.getElementById('discoverDiv').style.display = "block";
+        }
 
     </script>
 </template>
