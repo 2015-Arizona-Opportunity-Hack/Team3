@@ -12,7 +12,7 @@ Published under Creative Commons License 3.0
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <title>MeetMe</title>
+    <title>Children's cancer network</title>
 </head>
 
 <body class="index">
@@ -40,7 +40,7 @@ Published under Creative Commons License 3.0
 
     <!-- Header -->
     <header id="header" class="alt">
-        <h1 id="logo"><a href="index.html">MeetMe <span>by SegFault!</span></a></h1>
+        <h1 id="logo"><a href="#">Join <span>the community!</span></a></h1>
         <nav id="nav">
             <ul>
                 <li><a href="#" class="button special">
@@ -50,8 +50,9 @@ Published under Creative Commons License 3.0
                             <input type="text" name="text" placeholder="Type to add new tasks"/>
                         </form>-->
                     {{/if}}</a></li>
-                <li class="current"><a href="index.html">Welcome</a></li>
 
+                <li class="current"><a href="#" id="settings2">Welcome</a></li>
+                <li class="current">{{#if currentUser}}<a href="#" id="settings">Settings</a>{{/if}}</li>
             </ul>
         </nav>
     </header>
@@ -59,18 +60,17 @@ Published under Creative Commons License 3.0
     <!-- Banner -->
     <section id="banner">
         <div class="inner">
-
             <header>
-                <h2>MEETME</h2>
+                <h2>Children's Cancer Network</h2>
             </header>
-            <p>This is <strong>MeetMe</strong>, a collaborative
+            <p>Cancer <strong>sucks</strong>
                 <br/>
-                meeting planner
+                Get and offer support to our community!
                 <br/>
-                by <a href="https://github.com/ser515asu/MeetMe-Segfault">SEGFAULT</a>.</p>
+                by <a href="https://github.com/Opportunity-Hack-2015-Arizona/Team3" target="_blank">SEGFAULT</a>.</p>
             <footer>
                 <ul class="buttons vertical">
-                    <li><a href="#" class="button fit scrolly">Tell Me More</a></li>
+                    <li><a href="http://childrenscancernetwork.org/" class="button fit scrolly" target="_blank">Tell Me More</a></li>
                 </ul>
             </footer>
         </div>
@@ -110,7 +110,8 @@ Published under Creative Commons License 3.0
 
 </body>
 <template name="info">
-    <div id="form-div" class="col-md-4 col-sm-offset-4">
+    <div id="form-div" class="col-md-4 col-sm-offset-4 modal fade" style="height:70%">
+        <span class="glyphicon glyphicon-remove"></span >
     <form class="new-task" id="user-form">
         <label for="usr">Name:</label>
         <input type="text" class="form-control" name="personName" id="usr">
@@ -118,11 +119,19 @@ Published under Creative Commons License 3.0
         <input type="date" name="personAge">
         <div class="form-group">
             <label for="sel1">Select cancer type:</label>
-            <select class="form-control" id="sel1">
+            <select class="form-control" id="sel1" name="cancerType">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
                 <option>4</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="sel2">Gender:</label>
+            <select class="form-control" id="sel2" name="gender">
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
             </select>
         </div>
         <input type="submit" value="Submit">

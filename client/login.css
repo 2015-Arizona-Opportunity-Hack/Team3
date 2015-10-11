@@ -452,6 +452,7 @@ z-index: 10000;
 
 #header nav ul li.current > a {
     font-weight: 900;
+    postition: fixed;
 }
 
 #header.reveal {
@@ -673,5 +674,6 @@ z-index: 10000;
     padding: 0;
     border: 0;
 }
-
-
+.glyphicon-remove {
+    cursor: pointer;
+}
