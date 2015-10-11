@@ -25,3 +25,4 @@ accounts-google
 themeteorchef:jquery-validation
 insecure
 bootstrap
+iron:router

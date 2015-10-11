@@ -34,24 +34,7 @@ if (Meteor.isClient) {
             $('#form-div').modal('hide');
         }
     });
-    Template.body.events({
-        'click #settings': function (e) {
-            e.preventDefault();
-            $('#form-div').modal('show');
-        }
-    });
-    Template.body.events({
-        'click .glyphicon-remove': function (e) {
-            e.preventDefault();
-            $('#form-div').modal('hide');
-        }
-    });
-    Template.body.events({
-        'click #cancel_btn': function (e) {
-            e.preventDefault();
-            $('#form-div').modal('hide');
-        }
-    });
+
     Accounts.ui.config({
         passwordSignupFields: "USERNAME_ONLY"
     });

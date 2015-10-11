@@ -3,19 +3,9 @@ Credit: http://html5up.net/twenty
 Published under Creative Commons License 3.0
 -->
 
-<head>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <title>Children's cancer network</title>
-</head>
-
-<body class="index">
+<template name = "login">
+<div class="index">
 <script>
     window.fbAsyncInit = function () {
         FB.init({
@@ -52,9 +42,11 @@ Published under Creative Commons License 3.0
                     {{/if}}</a></li>
 
                 <li class="current"><a href="#" id="settings2">Welcome</a></li>
-                <li class="current">{{#if currentUser}}<a href="#" id="settings">Settings</a>{{/if}}</li>
+                <li class="current">{{#if currentUser}}<a href="{{pathFor 'getinfo'}}" id="settings">Settings</a>{{/if}}</li>
+
             </ul>
         </nav>
+
     </header>
 
     <!-- Banner -->
@@ -74,7 +66,11 @@ Published under Creative Commons License 3.0
                 </ul>
             </footer>
         </div>
-
+        <div class = "inner">
+            {{#if currentUser}}
+                {{> home}}
+            {{/if}}
+        </div>
     </section>
     {{> info}}
     <!-- Footer -->
@@ -108,7 +104,8 @@ Published under Creative Commons License 3.0
 
 <script src="assets/js/main.js"></script>
 
-</body>
+</div>
+</template>
 <template name="info">
     <div id="form-div" class="col-md-4 col-sm-offset-4 modal fade" style="height:70%">
         <span class="glyphicon glyphicon-remove" style="float:right"></span >
