@@ -12,6 +12,7 @@ Published under Creative Commons License 3.0
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
     <title>Children's cancer network</title>
 </head>
 
@@ -77,6 +78,7 @@ Published under Creative Commons License 3.0
 
     </section>
     {{> info}}
+    {{> graph}}
     <!-- Footer -->
     <div>
     <footer id="footer">
@@ -130,5 +132,124 @@ Published under Creative Commons License 3.0
         <input type="button" value="Cancel" id="cancel_btn">
     </form>
     </div>
+</template>
+<template name="graph">
+
+    <div id="graphContainer"></div>
+    <style>
+
+        .node {
+            stroke: #fff;
+            stroke-width: 1.5px;
+        }
+
+        .link {
+            stroke: #999;
+            stroke-opacity: .6;
+        }
+        div.tooltip {
+            position: absolute;
+            text-align: center;
+            width: 60px;
+            height: 28px;
+            padding: 2px;
+            font: 12px sans-serif;
+            background: lightsteelblue;
+            border: 0px;
+            border-radius: 8px;
+            pointer-events: none;
+        }
+
+    </style>
+    <script>
+
+
+        var graph = {
+            "nodes":[
+                {"name":"Yousuf","group":"Illness"},
+                {"name":"Vishal","group":"Illness"},
+                {"name":"Sarin","group":"Age"},
+                {"name":"Tharun","group":"Gender"},
+                {"name":"Nitesh","group":"Location"},
+                {"name":"Jot","group":"Illness"}
+            ],
+            "links": [
+                {"source":0,"target":2,"value":4,"linkdistance":200},
+                {"source":0,"target":3,"value":4,"linkdistance":200},
+                {"source":0,"target":1,"value":2,"linkdistance":100},
+                {"source":0,"target":5,"value":3,"linkdistance":150},
+                {"source":0,"target":4,"value":1,"linkdistance":50}
+            ]};
+
+        var width = 1200,
+                height = 900;
+
+        var color = d3.scale.category20();
+
+        var force = d3.layout.force()
+                .charge(-5000)
+                .linkDistance(function(d) { return  d.linkdistance; })
+                .size([width, height]);
+
+        var div = d3.select("#graphContainer").append("div")
+                .attr("class", "tooltip")
+                .style("opacity", 0);
+
+        var svg = d3.select("#graphContainer").append("svg")
+                .attr("width", width)
+                .attr("height", height);
+
+        force
+                .nodes(graph.nodes)
+                .links(graph.links)
+                .start();
+
+        var link = svg.selectAll(".link")
+                .data(graph.links)
+                .enter().append("line")
+                .attr("class", "link")
+                .style("stroke-width", function(d) { return Math.sqrt(d.value); });
+
+        var node = svg.selectAll(".node")
+                .data(graph.nodes)
+                .enter().append("g")
+                .attr("class", "node")
+                .append("circle")
+                .attr("r", 40)
+                .style("fill",function(d) { return color(d.group); })
+                .attr('fill-opacity', 0.2)
+                .style("stroke", function(d) { return color(d.group); })
+                .call(force.drag)
+                .on("mouseover", function(d) {
+                    div.transition()
+                            .duration(200)
+                            .style("opacity", .9);
+                    div	.html(d.name + "<br/>"  + d.group)
+                            .style("left", (d3.event.pageX) + "px")
+                            .style("top", (d3.event.pageY - 28) + "px");
+                })
+                .on("mouseout", function(d) {
+                    div.transition()
+                            .duration(500)
+                            .style("opacity", 0);
+                });
+
+
+        node.append("title")
+                .attr("text-anchor", "middle")
+                .text(function(d) { return d.name; });
+
+
+        force.on("tick", function() {
+            link.attr("x1", function(d) { return d.source.x; })
+                    .attr("y1", function(d) { return d.source.y; })
+                    .attr("x2", function(d) { return d.target.x; })
+                    .attr("y2", function(d) { return d.target.y; });
+
+            node.attr("cx", function(d) { return d.x; })
+                    .attr("cy", function(d) { return d.y; });
+        });
+
+    </script>
 </template>
 
